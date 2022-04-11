@@ -1,0 +1,32 @@
+@import './variables';
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: $font-family;
+    background-color: $clr-bg;
+}
+
+.container{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+img{
+    display: block;
+}
+
+ul{
+    list-style: none;
+}
