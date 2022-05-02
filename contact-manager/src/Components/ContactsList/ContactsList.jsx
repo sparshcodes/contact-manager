@@ -1,8 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { ContactContext } from "../../Contexts/contactContext";
+import Contact from "../Contact/Contact";
 import "./ContactsList.scss";
 
 function ContactsList() {
-  const [active, setActive] = useState("all");
+  const [active, setActive] = useState("colleague");
+
+  const { contacts } = useContext(ContactContext);
+  const contactList = contacts.map((contact) => {
+    return <Contact contactDetail={contact} key={contact.id} />;
+  });
 
   const tabIndicatorRef = useRef();
   const activeRef = useRef();
@@ -69,6 +76,7 @@ function ContactsList() {
         </li>
         <div ref={tabIndicatorRef} className="tab-indicator"></div>
       </ul>
+      <div className="contacts-container">{contactList}</div>
     </div>
   );
 }

@@ -30,3 +30,25 @@ img{
 ul{
     list-style: none;
 }
+
+.btn{
+    font-family: inherit;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.8em 1.4em;
+    color: #fff; 
+    border-radius: 2.5rem;
+    border:none;
+    cursor: pointer;
+
+    &.primary{
+        background-color:$clr-secondary ;
+    }
+
+    &.secondary{
+        background-color:$clr-disabled ;
+    }
+
+}
