@@ -15,6 +15,9 @@ import {
 } from "firebase/firestore";
 import { ContactContext } from "./Contexts/contactContext";
 import EditForm from "./Components/EditForm/EditForm";
+import Footer from "./Components/Footer/Footer";
+
+// create a deleteAll Button
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -37,8 +40,8 @@ function App() {
   return (
     <div className="App">
       <div className="container">
+        <Header />
         <ContactContext.Provider value={{ contacts, setContacts }}>
-          <Header />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/addForm" element={<AddForm />}></Route>
@@ -46,6 +49,7 @@ function App() {
           </Routes>
         </ContactContext.Provider>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 @import './variables';
 
+
 *,
 *::before,
 *::after{
@@ -14,7 +15,6 @@
 
 body{
     font-family: $font-family;
-    background-color: $clr-bg;
 }
 
 .container{

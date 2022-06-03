@@ -26,3 +26,33 @@
         align-items: center;
     }
 }
+
+.parallax-images{
+    img{
+        position: absolute;
+    }
+
+    // .icon-1{
+    //     top: 15vh;
+    //     left:12vw;
+    //     transform: rotate(-15deg);
+    // }
+
+    // .icon-2{
+    //     top:15vh;
+    //     right:12vw;
+    //     transform: rotate(15deg);
+    // }
+
+    // .icon-3{
+    //     top:30vh;
+    //     right:8vw;
+    //     transform: rotate(10deg);
+    // }
+
+    // .icon-4{
+    //     top:30vh;
+    //     left:8vw;
+    //     transform: rotate(-10deg);
+    // }
+}

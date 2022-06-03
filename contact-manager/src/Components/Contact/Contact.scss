@@ -2,11 +2,11 @@
 
 .contact{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background-color: $clr-primary;
     outline:1rem solid rgba($clr-primary, 0.4);
-    padding:4.5rem 1rem;
+    padding:4.5rem 1rem 4.5rem 6rem;
     border-radius: 1.5rem;
     position: relative;
 
@@ -28,6 +28,7 @@
             align-items: flex-start;
 
             span{
+                font-weight:600;
                 color:#fff;
                 font-size: 1.8rem;
 
@@ -60,6 +61,11 @@
                     margin-right: 2rem;
                 }
 
+            }
+
+            .message{
+                font-size:1.5rem;
+                color: #ddd;
             }
         }
 

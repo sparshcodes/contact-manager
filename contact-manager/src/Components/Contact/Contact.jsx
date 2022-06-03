@@ -30,10 +30,49 @@ function Contact(props) {
     id,
   } = contactDetail;
 
+  const socialMediaList = [
+    {
+      url: facebookURL,
+      icon: <FaFacebookF />,
+    },
+    {
+      url: instagramURL,
+      icon: <FaInstagram />,
+    },
+    {
+      url: githubURL,
+      icon: <FaGithub />,
+    },
+    {
+      url: linkedInURL,
+      icon: <FaLinkedinIn />,
+    },
+    {
+      url: twitterURL,
+      icon: <FaTwitter />,
+    },
+  ];
+
   const deleteHandler = async () => {
     const docRef = doc(db, "contacts", id);
     const deleteRequest = await deleteDoc(docRef);
   };
+
+  const socialMediaAccounts = socialMediaList.every(
+    (socialMedia) => socialMedia.url == ""
+  ) ? (
+    <p className="message">* No social media account linked</p>
+  ) : (
+    socialMediaList.map((socialMedia, index) => {
+      if (socialMedia.url) {
+        return (
+          <a key={index} href={socialMedia.url}>
+            {socialMedia.icon}
+          </a>
+        );
+      }
+    })
+  );
 
   return (
     <div className="contact">
@@ -51,31 +90,14 @@ function Contact(props) {
           <span className="email">email: {email}</span>
           <span className="phone">phone: {phone}</span>
         </div>
-        <div className="social-media-details">
-          {facebookURL && (
-            <a href={facebookURL}>
-              <FaFacebookF />
-            </a>
-          )}
-          <a href={instagramURL}>
-            <FaInstagram />
-          </a>
-          <a href={linkedInURL}>
-            <FaLinkedinIn />
-          </a>
-          <a href={twitterURL}>
-            <FaTwitter />
-          </a>
-          <a href={githubURL}>
-            <FaGithub />
-          </a>
-        </div>
+        <div className="social-media-details">{socialMediaAccounts}</div>
       </div>
       <span className="category">{category}</span>
       <div className="btn-group">
         <button
           className="delete-btn modify-btn"
           onClick={(e) => deleteHandler(e, id)}
+          title="Delete Contact"
         >
           <AiFillDelete />
         </button>
@@ -83,6 +105,7 @@ function Contact(props) {
           to={`/editContact/${contactDetail.id}`}
           state={contactDetail}
           className="edit-btn modify-btn"
+          title="Edit Contact"
         >
           <MdEdit />
         </Link>

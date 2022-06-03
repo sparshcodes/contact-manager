@@ -4,16 +4,27 @@ import Contact from "../Contact/Contact";
 import "./ContactsList.scss";
 
 function ContactsList() {
-  const [active, setActive] = useState("colleague");
-
-  const { contacts } = useContext(ContactContext);
-  const contactList = contacts.map((contact) => {
-    return <Contact contactDetail={contact} key={contact.id} />;
-  });
-
   const tabIndicatorRef = useRef();
   const activeRef = useRef();
 
+  const [active, setActive] = useState("all");
+
+  const { contacts } = useContext(ContactContext);
+
+  let contactList = contacts.filter((contact) => {
+    return contact.category == active;
+  });
+
+  let contactItems =
+    active === "all"
+      ? contacts.map((contact) => {
+          return <Contact contactDetail={contact} key={contact.id} />;
+        })
+      : contactList.map((contact) => {
+          return <Contact contactDetail={contact} key={contact.id} />;
+        });
+
+  console.log(contactItems);
   const setTabIndicatorStyle = (currentActiveElem) => {
     const widthOfElem = currentActiveElem.offsetWidth;
     const xPosOfElem = currentActiveElem.offsetLeft;
@@ -76,7 +87,16 @@ function ContactsList() {
         </li>
         <div ref={tabIndicatorRef} className="tab-indicator"></div>
       </ul>
-      <div className="contacts-container">{contactList}</div>
+      <div
+        className="contacts-container"
+        style={{display: contactItems.length ? "grid" : "block"}}
+      >
+        {contactItems.length ? (
+          contactItems
+        ) : (
+          <p className="info-text">No Contacts Here 🤨</p>
+        )}
+      </div>
     </div>
   );
 }

@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 import ContactsList from "../ContactsList/ContactsList";
 
 function Home() {
-
   return (
     <>
       <div className="add-contact-wrapper">
-        <p>Manage All Your Contact Details At One Place</p>
+        <p>Manage All Your Contact Details At One Place 😎</p>
         <Link to="/addForm" className="btn add-btn">
           add new contact{" "}
           <MdOutlineAddCircle style={{ marginLeft: "8px", fontSize: "2em" }} />

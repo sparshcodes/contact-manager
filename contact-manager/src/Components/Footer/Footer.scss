@@ -1,0 +1,29 @@
+@import "../../sassStyles/variables";
+
+.footer {
+  margin-top: 5rem;
+  color: $clr-tertiary;
+  padding: 1rem 0;
+  width: 100%;
+  position: sticky;
+  top: 100%;
+
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
+
+  img {
+    max-width: 50px;
+    margin-left: 1rem;
+    animation: spin 5s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
