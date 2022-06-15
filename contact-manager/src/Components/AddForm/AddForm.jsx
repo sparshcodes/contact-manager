@@ -11,7 +11,8 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import db from "../../firebase/firebaseConfig";
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, collection, doc } from "firebase/firestore";
+import { userAuth } from "../../Contexts/UserAuthContext";
 
 const initialValues = {
   name: "",
@@ -28,6 +29,7 @@ const initialValues = {
 
 function AddForm() {
   const [values, setValues] = useState(initialValues);
+  const { user: userData } = userAuth();
 
   let navigateTo = useNavigate();
 
@@ -36,7 +38,7 @@ function AddForm() {
     addData();
   };
 
-  const addData = () => {
+  const addData = async () => {
     const {
       name,
       email,
@@ -63,9 +65,9 @@ function AddForm() {
       githubURL,
     };
 
-    const collectionRef = collection(db, "contacts");
-    addDoc(collectionRef, user);
-    navigateTo("/");
+    const collectionRef = collection(db, "users", userData.uid, "contact");
+    await setDoc(doc(collectionRef), user);
+    navigateTo("/home");
   };
 
   const handleInput = (e) => {
