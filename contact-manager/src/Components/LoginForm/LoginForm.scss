@@ -1,1 +1,171 @@
 @import "../../sassStyles/variables";
+
+.login-form {
+  background-color: $clr-primary;
+  border-radius: 1rem;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  .wrapper {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .form-heading {
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 4rem;
+  }
+
+  .input-container {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .input-group {
+      position: relative;
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 5rem;
+      }
+
+      label {
+        position: absolute;
+        color: #fff;
+        font-size: 1.6rem;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        text-transform: capitalize;
+        transition: all 0.3s;
+        pointer-events: none;
+      }
+
+      input {
+        padding: 1rem 1.5rem 1rem 1rem;
+        width: 100%;
+        border: none;
+        border-bottom: 3px solid #fff;
+        outline: none;
+        color: #fff;
+        font-family: inherit;
+        font-size: 1.6rem;
+        background-color: transparent;
+
+        &:focus+label,
+        &:not(:placeholder-shown)+label {
+          transform: translate(-1rem, -4.5rem);
+        }
+      }
+
+    }
+  }
+
+  .error-message {
+    background-color: #FF1A1A;
+    color: #fff;
+    font-size: 1.4rem;
+    width: fit-content;
+    margin-top: 2rem;
+    border-radius: 1rem;
+  }
+
+  .submit-btn {
+    padding: 1em 3em;
+    background-color: #fff;
+    border: none;
+    margin: 4rem 0 5rem;
+    text-transform: capitalize;
+    font-family: inherit;
+    color: $clr-tertiary;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .other-account-text {
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    position: relative;
+    z-index: 1;
+
+    span {
+      display: inline-block;
+      padding: 0 1rem;
+      background-color: $clr-primary;
+      z-index: 2;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+  }
+
+  .social-media-accounts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 3rem 0 4rem;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      border: none;
+      font-size: 1.6rem;
+      padding: 1em 2em;
+      font-family: inherit;
+      text-transform: capitalize;
+      border-radius: 1rem;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+
+  }
+
+  .account-text {
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 1.6rem;
+
+    a {
+      color: $clr-secondary;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  }
+
+}
+
+@media screen and (max-width: 36em) {
+
+  .login-form {
+    .social-media-accounts {
+      grid-template-columns: 1fr;
+
+      button {
+        &:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}

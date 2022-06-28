@@ -1,58 +1,64 @@
 @import "../../sassStyles/variables";
 
-.add-contact-wrapper{
+.add-contact-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    p{
+    p {
         font-size: 2.8rem;
         color: $clr-tertiary;
         margin-bottom: 3.5rem;
     }
 
-    .btn.add-btn{
+    .btn.add-btn {
         text-decoration: none;
         text-transform: capitalize;
         font-size: 2rem;
         font-weight: 600;
         background-color: $clr-secondary;
         padding: 0.8em 1.4em;
-        color: #fff; 
+        color: #fff;
         border-radius: 2.5rem;
-        box-shadow: 0 1rem 2rem rgba($clr-secondary,0.3);
+        box-shadow: 0 1rem 2rem rgba($clr-secondary, 0.3);
         display: flex;
         justify-content: center;
         align-items: center;
     }
 }
 
-.parallax-images{
-    img{
-        position: absolute;
+// <576px
+// ≥576px
+// ≥768px
+// ≥992px
+// ≥1200px
+// ≥1400px
+
+@media screen and (max-width: 75em) {}
+
+@media screen and (max-width: 62em) {
+    .add-contact-wrapper {
+        p {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn.add-btn {
+            font-size: 1.6rem;
+        }
     }
+}
 
-    // .icon-1{
-    //     top: 15vh;
-    //     left:12vw;
-    //     transform: rotate(-15deg);
-    // }
+@media screen and (max-width: 24em) {
+    .add-contact-wrapper {
+        p {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
 
-    // .icon-2{
-    //     top:15vh;
-    //     right:12vw;
-    //     transform: rotate(15deg);
-    // }
-
-    // .icon-3{
-    //     top:30vh;
-    //     right:8vw;
-    //     transform: rotate(10deg);
-    // }
-
-    // .icon-4{
-    //     top:30vh;
-    //     left:8vw;
-    //     transform: rotate(-10deg);
-    // }
+        .btn.add-btn {
+            font-size: 1.2rem;
+        }
+    }
 }

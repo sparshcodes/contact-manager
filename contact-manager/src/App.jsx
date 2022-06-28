@@ -18,28 +18,28 @@ import EditForm from "./Components/EditForm/EditForm";
 import Footer from "./Components/Footer/Footer";
 import LoginForm from "./Components/LoginForm/LoginForm";
 import RegisterForm from "./Components/RegisterForm/RegisterForm";
-import { userAuth, AuthContextProvider } from "./Contexts/UserAuthContext";
+import { userAuth } from "./Contexts/UserAuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
 // create a deleteAll Button
 
 function App() {
   const [contacts, setContacts] = useState([]);
-  const user = userAuth();
+  const { user: userData } = userAuth();
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [userData]);
 
   const getData = async () => {
-    // const colRef = collection(db, `users/${userData.uid}/contact`);
-    // onSnapshot(colRef, (snapshot) => {
-    //   setContacts(
-    //     snapshot.docs.map((doc) => {
-    //       return { ...doc.data(), id: doc.id };
-    //     })
-    //   );
-    // });
+    const colRef = collection(db, `users/${userData && userData.uid}/contact`);
+    onSnapshot(colRef, (snapshot) => {
+      setContacts(
+        snapshot.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        })
+      );
+    });
   };
 
   return (
@@ -54,7 +54,7 @@ function App() {
               <Route
                 path="/home"
                 element={
-                  <ProtectedRoute user={user}>
+                  <ProtectedRoute>
                     <Home />
                   </ProtectedRoute>
                 }
@@ -77,8 +77,8 @@ function App() {
               ></Route>
             </Routes>
           </BrowserRouter>
-          <Footer />
         </div>
+        <Footer />
       </div>
     </ContactContext.Provider>
   );

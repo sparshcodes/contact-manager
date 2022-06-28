@@ -1,32 +1,33 @@
 @import "../../sassStyles/variables";
 
-.contactsList{
+.contactsList {
     margin: 6rem 0;
 }
 
-.category-tabs{
+.category-tabs {
     display: flex;
     justify-content: space-between;
     position: relative;
+    // border:3px solid;
 
-    .tab-item{
+    .tab-item {
         text-transform: capitalize;
         font-size: 2.8rem;
-        padding: 1rem 3.5rem;
+        padding: 0.5em 1.5em;
         cursor: pointer;
         transition: color 0.3s;
 
-        &:not(:last-of-type){
+        &:not(:last-of-type) {
             margin-right: 4rem;
         }
 
-        &.active{
-        color: #fff;
+        &.active {
+            color: #fff;
         }
 
     }
 
-    .tab-indicator{
+    .tab-indicator {
         position: absolute;
         z-index: -1;
         height: 100%;
@@ -36,16 +37,96 @@
     }
 }
 
-.contacts-container{
+.contacts-container {
     margin-top: 8rem;
     grid-template-columns: 1fr 1fr;
-    grid-gap:5rem;
+    grid-gap: 4rem;
 
-    .info-text{
+    .info-text {
         text-align: center;
         margin: 0 auto;
         font-size: 2rem;
         color: #999;
     }
+
+}
+
+
+@media screen and (max-width: 75em) {
+    .category-tabs {
+
+        .tab-item {
+            font-size: 2.5rem;
+            padding: 0.4em 1em;
+
+            &:not(:last-of-type) {
+                margin-right: 0;
+            }
+
+        }
+    }
+}
+
+
+@media screen and (max-width: 62em) {
+
+    .category-tabs {
+        .tab-item {
+            font-size: 2rem;
+        }
+    }
+
+    .contacts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 36em) {
+    .contactsList {
+        width: 98%;
+        margin: 6rem auto;
+    }
+
+    .category-tabs {
+        .tab-item {
+            font-size: 1.2rem;
+        }
+
+        .tab-indicator {
+            border-radius: 1rem;
+        }
+    }
+
+    .contacts-container {
+        margin-top: 8rem;
+        grid-gap: 9rem;
+    }
+
+}
+
+@media screen and (max-width: 24em) {
+
+    .contactsList {
+        margin: 4rem auto;
+    }
+
+    .category-tabs {
+        .tab-item {
+            font-size: 1rem;
+            padding: 0.2em 0.8em;
+        }
+
+        .tab-indicator {
+            border-radius: 0.8rem;
+        }
+    }
+
+    .contacts-container {
+        grid-gap: 8rem;
+        .info-text {
+            font-size: 1.5rem;
+        }
+    }
+
 
 }

@@ -76,14 +76,16 @@ function Contact(props) {
 
   return (
     <div className="contact">
-      <img
-        src={imgURL}
-        onError={(e) => {
-          e.target.src = "./images/defaultImg.png";
-          e.target.onerror = null;
-        }}
-        alt="contact image"
-      />
+      <div className="user-image">
+        <img
+          src={imgURL}
+          onError={(e) => {
+            e.target.src = "./images/defaultImg.png";
+            e.target.onerror = null;
+          }}
+          alt="contact image"
+        />
+      </div>
       <div className="user-details">
         <div className="general-details">
           <span className="name">name: {name}</span>

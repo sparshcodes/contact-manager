@@ -1,11 +1,159 @@
 @import "../../sassStyles/variables";
 
-.header{
-    padding:3rem 0;
+.header {
+    padding: 3rem 0;
     margin-bottom: 3rem;
     background-color: #fff;
-    
-    img{
-        max-width: 35rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        max-width: 38rem;
+    }
+
+    .profile-details {
+        position: relative;
+
+        .profile-img {
+            max-width: 10rem;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(#fccea2, 0.6);
+            cursor: pointer;
+        }
+
+        .profile-tooltip {
+            text-align: center;
+            position: absolute;
+            left: -15%;
+            top: 50%;
+            transform: translate(-100%, -50%) scale(0);
+            background-color: $clr-secondary;
+            color: #fff;
+            padding: 1em 2em;
+            border-radius: 1rem;
+            font-size: 1.3rem;
+            transform-origin: 100% 50%;
+            opacity: 0;
+            transition: transform 0.3s;
+            box-shadow: 0 1rem 2rem rgba(#000,0.2);
+
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 1.2rem;
+                height: 1.2rem;
+                background-color: inherit;
+                top: 50%;
+                right: 0;
+                transform: translate(50%, -50%) rotate(45deg);
+            }
+
+            span {
+                font-weight: 600;
+            }
+
+            button {
+                margin-top: 1rem;
+                padding: 0.5em 2em;
+                border: none;
+                font: inherit;
+                background-color: #fff;
+                border-radius: 0.5rem;
+                color: $clr-secondary;
+                cursor: pointer;
+            }
+        }
+
+        &:hover .profile-tooltip {
+            opacity: 1;
+            transform: translate(-100%, -50%) scale(1);
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 62em) {
+    .header {
+        padding: 2rem 0;
+
+        .logo {
+            max-width: 30rem;
+        }
+
+        .profile-details {
+            .profile-img {
+                max-width: 8rem;
+            }
+
+            .profile-tooltip{
+                background-color: $clr-secondary;
+                left:65%;
+                top:100%;
+                opacity: 0;
+                transform: translate(-100%,15%) scale(0);
+                transform-origin: 100% 0;
+
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    background-color: inherit;
+                    top: 0;
+                    right: 0;
+                    transform: translate(-50%,-35%) rotate(45deg);
+                }
+            }
+
+            
+        &:hover .profile-tooltip {
+            opacity: 1;
+            transform: translate(-100%,15%) scale(1);
+        }
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 36em) {
+    .header {
+        padding: 2rem 0;
+
+        .logo {
+            max-width: 25rem;
+        }
+
+        .profile-details {
+            .profile-img {
+                max-width: 7rem;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 24em) {
+    .header {
+        padding: 2rem 0;
+
+        .logo {
+            max-width: 18rem;
+        }
+
+        .profile-details {
+            .profile-img {
+                max-width: 5rem;
+            }
+
+            .profile-tooltip{
+            font-size: 1rem;
+            }
+        }
+
     }
 }
