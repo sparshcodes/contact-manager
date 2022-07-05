@@ -1,0 +1,246 @@
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #703EDB;
+  outline: 1rem solid rgba(112, 62, 219, 0.4);
+  padding: 3.5em 2.5em;
+  border-radius: 1.5rem;
+  position: relative;
+}
+
+.contact .user-image {
+  margin-right: 2rem;
+}
+
+.contact .user-image img {
+  width: 14rem;
+  height: 14rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.contact .user-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.contact .user-details .general-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.contact .user-details .general-details span {
+  font-weight: 500;
+  word-break: break-all;
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.contact .user-details .general-details span:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+.contact .user-details .general-details span::first-letter {
+  text-transform: capitalize;
+}
+
+.contact .user-details .social-media-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2.5rem;
+}
+
+.contact .user-details .social-media-details a {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 2em;
+  height: 2em;
+  background-color: #FF8057;
+  font-size: 2rem;
+  border-radius: 50%;
+  color: #fff;
+  outline: 5px solid rgba(255, 128, 87, 0.4);
+}
+
+.contact .user-details .social-media-details a:not(:last-of-type) {
+  margin-right: 2rem;
+}
+
+.contact .user-details .social-media-details .message {
+  font-size: 1.5rem;
+  color: #ddd;
+}
+
+.contact .category {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: #FF8057;
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.8rem;
+  border-radius: 1.4rem;
+  text-transform: capitalize;
+}
+
+.contact .btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+.contact .btn-group .modify-btn {
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+  color: #fff;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.contact .btn-group .delete-btn {
+  background-color: #FF1A1A;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.contact .btn-group .edit-btn {
+  background-color: #51C8A4;
+}
+
+@media screen and (max-width: 75em) {
+  .contact .user-image img {
+    width: 10rem;
+    height: 10rem;
+  }
+  .contact .user-details .general-details span {
+    font-size: 1.4rem;
+  }
+  .contact .user-details .general-details span:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+  .contact .user-details .social-media-details {
+    margin-top: 2rem;
+  }
+  .contact .user-details .social-media-details a {
+    font-size: 1.6rem;
+  }
+  .contact .user-details .social-media-details .message {
+    font-size: 1.3rem;
+  }
+  .contact .category {
+    font-size: 1.4rem;
+    border-radius: 1.4rem;
+  }
+  .contact .btn-group .modify-btn {
+    padding: 1rem;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+  }
+}
+
+@media screen and (max-width: 36em) {
+  .contact {
+    padding: 6em 1.5em 3em;
+    outline: 0.6rem solid rgba(112, 62, 219, 0.4);
+  }
+  .contact .user-details .general-details span {
+    font-size: 1.2rem;
+  }
+  .contact .user-details .general-details span:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+  .contact .user-image {
+    margin-right: 2rem;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    top: 0;
+  }
+  .contact .user-image img {
+    width: 8rem;
+    height: 8rem;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  .contact .category {
+    font-size: 1.2rem;
+  }
+  .contact .btn-group .modify-btn {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 24em) {
+  .contact {
+    padding: 5em 1em 3em;
+  }
+  .contact .user-details .general-details span {
+    font-size: 1rem;
+  }
+  .contact .user-details .general-details span:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+  .contact .user-details .social-media-details {
+    margin-top: 1.5rem;
+  }
+  .contact .user-details .social-media-details a {
+    font-size: 1.2rem;
+    outline: 3px solid rgba(255, 128, 87, 0.4);
+  }
+  .contact .user-details .social-media-details a:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+  .contact .user-details .social-media-details .message {
+    font-size: 1rem;
+  }
+  .contact .user-image img {
+    width: 8rem;
+    height: 8rem;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  .contact .category {
+    font-size: 1rem;
+    border-radius: 1.2rem;
+    padding: 0.8rem;
+  }
+}
+/*# sourceMappingURL=Contact.css.map */

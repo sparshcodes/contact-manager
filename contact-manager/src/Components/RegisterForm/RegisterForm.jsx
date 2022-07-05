@@ -27,7 +27,7 @@ function RegisterForm() {
   };
 
   return (
-    <form className="login-form">
+    <form className="form">
       <div className="wrapper">
         <h2 className="form-heading">sign up</h2>
         <div className="input-container">

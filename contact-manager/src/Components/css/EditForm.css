@@ -1,0 +1,145 @@
+.section-heading {
+  color: #444444;
+  font-size: 4rem;
+  margin-bottom: 4rem;
+}
+
+.edit-form .input-group .group-heading {
+  font-weight: 400;
+  text-align: left;
+  font-size: 2.5rem;
+  color: #444444;
+  margin-bottom: 3.5rem;
+  text-transform: capitalize;
+}
+
+.edit-form .input-group.sm-accounts {
+  margin-top: 10rem;
+}
+
+.edit-form .input-group.sm-accounts .input-container {
+  position: relative;
+}
+
+.edit-form .input-group.sm-accounts .input-container input {
+  padding: 1rem 5rem 1rem 1rem;
+}
+
+.edit-form .input-group.sm-accounts .input-container .icon-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  pointer-events: none;
+  background-color: #FF8057;
+}
+
+.edit-form .inputs-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 5rem;
+  position: relative;
+}
+
+.edit-form .inputs-wrapper .input-container {
+  position: relative;
+  width: 100%;
+  max-width: 35rem;
+}
+
+.edit-form .inputs-wrapper .input-container label {
+  position: absolute;
+  color: #FF8057;
+  font-size: 1.6rem;
+  top: 50%;
+  left: 1rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.edit-form .inputs-wrapper .input-container input {
+  padding: 1rem 1.5rem 1rem 1rem;
+  width: 100%;
+  border: none;
+  border-bottom: 3px solid #FF8057;
+  outline: none;
+  color: #444444;
+  font-family: inherit;
+  font-size: 1.6rem;
+}
+
+.edit-form .inputs-wrapper .input-container input:focus + label,
+.edit-form .inputs-wrapper .input-container input:not(:placeholder-shown) + label {
+  -webkit-transform: translate(-1rem, -4.5rem);
+          transform: translate(-1rem, -4.5rem);
+}
+
+.edit-form .inputs-wrapper .input-container #category {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-family: inherit;
+  width: 100%;
+  padding: 1.5rem;
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  background-color: #FF8057;
+  color: #fff;
+  font-weight: 400;
+  border: none;
+  border-radius: 1rem;
+}
+
+.edit-form .inputs-wrapper .input-container .arrow-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  pointer-events: none;
+}
+
+.edit-form .btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 6rem auto 0;
+}
+
+.edit-form .btn-group .btn:first-child {
+  margin-right: 1.5rem;
+}
+/*# sourceMappingURL=EditForm.css.map */

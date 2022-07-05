@@ -12,11 +12,13 @@ import {
 } from "react-icons/fa";
 import db from "../../firebase/firebaseConfig";
 import { addDoc, collection, setDoc, doc } from "firebase/firestore";
+import { userAuth } from "../../Contexts/UserAuthContext";
 
 function EditForm() {
   const location = useLocation();
   const contactData = location.state;
-  console.log(contactData);
+  const { user } = userAuth();
+  console.log(user)
   let navigateTo = useNavigate();
   const [values, setValues] = useState(contactData);
 
@@ -33,6 +35,8 @@ function EditForm() {
     githubURL,
     id,
   } = contactData;
+
+  console.log(id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +57,7 @@ function EditForm() {
       githubURL,
     } = values;
 
-    const user = {
+    const updatedUser = {
       name,
       email,
       phone,
@@ -66,8 +70,8 @@ function EditForm() {
       githubURL,
     };
 
-    const docRef = doc(db, "contacts", id);
-    setDoc(docRef, user);
+    const docRef = doc(db, "users", user.uid, "contact", id);
+    setDoc(docRef, updatedUser);
     navigateTo("/");
   };
 
@@ -82,7 +86,7 @@ function EditForm() {
   return (
     <div className="form-container">
       <h2 className="section-heading">Edit Contact</h2>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="edit-form" onSubmit={handleSubmit}>
         <div className="input-group general-details">
           <h3 className="group-heading">General Details :</h3>
           <div className="inputs-wrapper">

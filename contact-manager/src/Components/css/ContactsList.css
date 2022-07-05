@@ -1,0 +1,111 @@
+.contactsList {
+  margin: 6rem 0;
+}
+
+.category-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+.category-tabs .tab-item {
+  text-transform: capitalize;
+  font-size: 2.8rem;
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.category-tabs .tab-item:not(:last-of-type) {
+  margin-right: 4rem;
+}
+
+.category-tabs .tab-item.active {
+  color: #fff;
+}
+
+.category-tabs .tab-indicator {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  background-color: #FF8057;
+  -webkit-transition: left 0.4s, width 0.6s;
+  transition: left 0.4s, width 0.6s;
+  border-radius: 2rem;
+}
+
+.contacts-container {
+  margin-top: 8rem;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem;
+}
+
+.contacts-container .info-text {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 2rem;
+  color: #999;
+}
+
+@media screen and (max-width: 75em) {
+  .category-tabs .tab-item {
+    font-size: 2.5rem;
+    padding: 0.4em 1em;
+  }
+  .category-tabs .tab-item:not(:last-of-type) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 62em) {
+  .category-tabs .tab-item {
+    font-size: 2rem;
+  }
+  .contacts-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 36em) {
+  .contactsList {
+    width: 98%;
+    margin: 6rem auto;
+  }
+  .category-tabs .tab-item {
+    font-size: 1.2rem;
+  }
+  .category-tabs .tab-indicator {
+    border-radius: 1rem;
+  }
+  .contacts-container {
+    margin-top: 8rem;
+    grid-gap: 9rem;
+  }
+}
+
+@media screen and (max-width: 24em) {
+  .contactsList {
+    margin: 4rem auto;
+  }
+  .category-tabs .tab-item {
+    font-size: 1rem;
+    padding: 0.2em 0.8em;
+  }
+  .category-tabs .tab-indicator {
+    border-radius: 0.8rem;
+  }
+  .contacts-container {
+    grid-gap: 8rem;
+  }
+  .contacts-container .info-text {
+    font-size: 1.5rem;
+  }
+}
+/*# sourceMappingURL=ContactsList.css.map */

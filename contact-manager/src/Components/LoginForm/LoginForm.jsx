@@ -68,7 +68,7 @@ function LoginForm() {
   };
 
   return (
-    <form className="login-form">
+    <form className="login-form form">
       <div className="wrapper">
         <h2 className="form-heading">sign in</h2>
         <div className="input-container">

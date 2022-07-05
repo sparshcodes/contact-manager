@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../RegisterForm/RegisterForm.scss",
+        "../../sassStyles/_variables.scss"
+    ],
+    "names": [],
+    "file": "RegisterForm.css"
+}

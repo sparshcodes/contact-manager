@@ -81,7 +81,7 @@ function AddForm() {
   return (
     <div className="form-container">
       <h2 className="section-heading">Add New Contact</h2>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="add-form" onSubmit={handleSubmit}>
         <div className="input-group general-details">
           <h3 className="group-heading">General Details :</h3>
           <div className="inputs-wrapper">

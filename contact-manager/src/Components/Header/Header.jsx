@@ -1,5 +1,7 @@
 import React from "react";
 import "./Header.scss";
+import cmLogo from "../../assets/cmLogo.png"
+import userProfile from "../../assets/user_profile.png"
 import { Link, useNavigate } from "react-router-dom";
 import { userAuth } from "../../Contexts/UserAuthContext";
 
@@ -19,13 +21,13 @@ function Header() {
   return (
     <header className="header">
       <Link className="logo" to={"/home"}>
-        <img src="../images/cmLogo.png" alt="contact manager logo" />
+        <img src={cmLogo} alt="contact manager logo" />
       </Link>
       {user && (
         <div className="profile-details">
           <img
             className="profile-img"
-            src="../images/user_profile.png"
+            src={userProfile}
             alt="user profile image"
           />
           <div className="profile-tooltip">

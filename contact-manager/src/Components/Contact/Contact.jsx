@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import defaultImg from "../../assets/defaultImg.png"
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,9 +13,11 @@ import { MdEdit } from "react-icons/md";
 import "./Contact.scss";
 import db from "../../firebase/firebaseConfig";
 import { deleteDoc, doc } from "firebase/firestore";
+import { userAuth } from "../../Contexts/UserAuthContext";
 
 function Contact(props) {
   const { contactDetail } = props;
+  const { user } = userAuth();
 
   const {
     name,
@@ -54,7 +57,7 @@ function Contact(props) {
   ];
 
   const deleteHandler = async () => {
-    const docRef = doc(db, "contacts", id);
+    const docRef = doc(db, "users", user.uid, "contact", id);
     const deleteRequest = await deleteDoc(docRef);
   };
 
@@ -80,7 +83,7 @@ function Contact(props) {
         <img
           src={imgURL}
           onError={(e) => {
-            e.target.src = "./images/defaultImg.png";
+            e.target.src = defaultImg;
             e.target.onerror = null;
           }}
           alt="contact image"

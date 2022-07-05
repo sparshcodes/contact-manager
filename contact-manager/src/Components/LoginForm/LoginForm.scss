@@ -1,6 +1,6 @@
 @import "../../sassStyles/variables";
 
-.login-form {
+.form {
   background-color: $clr-primary;
   border-radius: 1rem;
   max-width: 70rem;
@@ -156,7 +156,7 @@
 
 @media screen and (max-width: 36em) {
 
-  .login-form {
+  .form {
     .social-media-accounts {
       grid-template-columns: 1fr;
 
