@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "./EditForm.scss";
+import styles from "./EditForm.module.scss";
 import { Link } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
 import {
@@ -18,7 +18,7 @@ function EditForm() {
   const location = useLocation();
   const contactData = location.state;
   const { user } = userAuth();
-  console.log(user)
+  console.log(user);
   let navigateTo = useNavigate();
   const [values, setValues] = useState(contactData);
 
@@ -36,7 +36,7 @@ function EditForm() {
     id,
   } = contactData;
 
-  console.log(id)
+  console.log(id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,9 +84,9 @@ function EditForm() {
   };
 
   return (
-    <div className="form-container">
-      <h2 className="section-heading">Edit Contact</h2>
-      <form className="edit-form" onSubmit={handleSubmit}>
+    <div className={styles["form-container"]}>
+      <h2 className={styles["section-heading"]}>Edit Contact</h2>
+      <form className={styles["edit-form"]} onSubmit={handleSubmit}>
         <div className="input-group general-details">
           <h3 className="group-heading">General Details :</h3>
           <div className="inputs-wrapper">
@@ -248,4 +248,4 @@ function EditForm() {
   );
 }
 
-export default EditForm;
+export default EditForm; 

@@ -13,12 +13,14 @@
 
     .user-image {
         margin-right: 2rem;
+        min-width: fit-content;
 
         img {
             width: 14rem;
             height: 14rem;
             object-fit: cover;
             border-radius: 50%;
+            box-shadow: 0 0 15px rgba(#000, 0.25);
         }
     }
 
@@ -38,7 +40,7 @@
                 font-weight: 500;
                 word-break: break-all;
                 color: #fff;
-                font-size: 1.8rem;
+                font-size: 1.6rem;
 
                 &:not(:last-of-type) {
                     margin-bottom: 2rem;
@@ -146,6 +148,7 @@
 
             .social-media-details {
                 margin-top: 2rem;
+
                 a {
                     font-size: 1.6rem;
                 }
@@ -176,7 +179,7 @@
 @media screen and (max-width: 36em) {
     .contact {
         padding: 6em 1.5em 3em;
-    outline: 0.6rem solid rgba($clr-primary, 0.4);
+        outline: 0.6rem solid rgba($clr-primary, 0.4);
 
         .user-details {
             .general-details {
@@ -201,7 +204,6 @@
             img {
                 width: 8rem;
                 height: 8rem;
-                box-shadow: 0 0 15px rgba(#000, 0.3);
             }
         }
 
@@ -236,6 +238,7 @@
 
             .social-media-details {
                 margin-top: 1.5rem;
+
                 a {
                     font-size: 1.2rem;
                     outline: 3px solid rgba($clr-secondary, 0.4);
@@ -267,7 +270,7 @@
             padding: 0.8rem;
         }
 
-        
+
 
     }
 
