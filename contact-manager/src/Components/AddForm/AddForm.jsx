@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./AddForm.scss";
 import { Link } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
 import {
@@ -13,6 +12,8 @@ import {
 import db from "../../firebase/firebaseConfig";
 import { setDoc, collection, doc } from "firebase/firestore";
 import { userAuth } from "../../Contexts/UserAuthContext";
+import "../../sassStyles/components/contactForm.scss"
+
 
 const initialValues = {
   name: "",
@@ -81,7 +82,7 @@ function AddForm() {
   return (
     <div className="form-container">
       <h2 className="section-heading">Add New Contact</h2>
-      <form className="add-form" onSubmit={handleSubmit}>
+      <form className="contact-form add-form" onSubmit={handleSubmit}>
         <div className="input-group general-details">
           <h3 className="group-heading">General Details :</h3>
           <div className="inputs-wrapper">

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import styles from "./EditForm.module.scss";
 import { Link } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
 import {
@@ -13,6 +12,7 @@ import {
 import db from "../../firebase/firebaseConfig";
 import { addDoc, collection, setDoc, doc } from "firebase/firestore";
 import { userAuth } from "../../Contexts/UserAuthContext";
+import "../../sassStyles/components/contactForm.scss";
 
 function EditForm() {
   const location = useLocation();
@@ -84,9 +84,9 @@ function EditForm() {
   };
 
   return (
-    <div className={styles["form-container"]}>
-      <h2 className={styles["section-heading"]}>Edit Contact</h2>
-      <form className={styles["edit-form"]} onSubmit={handleSubmit}>
+    <div className="form-container">
+      <h2 className="section-heading">Edit Contact</h2>
+      <form className="contact-form edit-form" onSubmit={handleSubmit}>
         <div className="input-group general-details">
           <h3 className="group-heading">General Details :</h3>
           <div className="inputs-wrapper">
@@ -248,4 +248,4 @@ function EditForm() {
   );
 }
 
-export default EditForm; 
+export default EditForm;

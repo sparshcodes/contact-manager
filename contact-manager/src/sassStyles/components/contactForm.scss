@@ -1,12 +1,14 @@
-@import "../../sassStyles/variables";
+@import "../sass-utils/variables";
+
+// <Form styling>
 
 .section-heading {
     color: $clr-tertiary;
-    font-size: 1rem;
+    font-size: 4rem;
     margin-bottom: 4rem;
 }
 
-.add-form {
+.contact-form {
     .input-group {
         .group-heading {
             font-weight: 400;
@@ -135,27 +137,36 @@
 
 @media screen and (max-width: 62em) {
     .section-heading {
-        font-size: 1rem;
-        color: red;
+        font-size: 3rem;
     }
 
-    .add-form {
-        .inputs-wrapper {
-            .input-container {
-                flex: 0 0 calc(50% - 5rem);
+    .contact-form {
+        .input-group {
+            .group-heading {
+                font-size: 2rem;
+            }
+
+            .inputs-wrapper {
+                .input-container {
+                    flex: 0 0 calc(50% - 5rem);
+                }
             }
         }
     }
 }
 
 @media screen and (max-width: 36em) {
-    .add-form {
-        .inputs-wrapper {
-            .input-container {
-                flex: 0 0 100%;
+    .contact-form {
+        .input-group {
+            .inputs-wrapper {
+                .input-container {
+                    flex: 0 0 100%;
+                }
             }
         }
     }
 }
 
 @media screen and (max-width: 24em) {}
+
+// </Form styling>
