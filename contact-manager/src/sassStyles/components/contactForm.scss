@@ -42,6 +42,8 @@
                     pointer-events: none;
                     background-color: $clr-secondary;
                 }
+
+
             }
         }
 
@@ -60,7 +62,6 @@
             // border:2px solid; 
             position: relative;
             width: 100%;
-            // max-width: 44rem;
 
             label {
                 position: absolute;
@@ -89,6 +90,27 @@
                     transform: translate(-1rem, -4.5rem);
                 }
             }
+
+            span {
+                font-size: 1.2rem;
+                position: absolute;
+                display: none;
+                font-weight: 600;
+                bottom: -2.2em;
+                left: 0;
+                color: red;
+                text-transform: capitalize;
+                margin-top: 1rem;
+            }
+
+
+            input:not(:focus)~span {
+                display: block;
+            }
+
+            // input:invalid ~ span{
+            //     display: block;
+            // }
 
             #category {
                 appearance: none;

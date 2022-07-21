@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
 import {
@@ -9,80 +8,16 @@ import {
   FaTwitter,
   FaGithub,
 } from "react-icons/fa";
-import db from "../../firebase/firebaseConfig";
-import { setDoc, collection, doc } from "firebase/firestore";
-import { userAuth } from "../../Contexts/UserAuthContext";
-import "../../sassStyles/components/contactForm.scss"
-
-
-const initialValues = {
-  name: "",
-  email: "",
-  phone: "",
-  imgURL: "",
-  category: "",
-  facebookURL: "",
-  instagramURL: "",
-  linkedInURL: "",
-  twitterURL: "",
-  githubURL: "",
-};
+import "../../sassStyles/components/contactForm.scss";
+import useForm from "../../hooks/useForm";
 
 function AddForm() {
-  const [values, setValues] = useState(initialValues);
-  const { user: userData } = userAuth();
-
-  let navigateTo = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addData();
-  };
-
-  const addData = async () => {
-    const {
-      name,
-      email,
-      phone,
-      imgURL,
-      category,
-      facebookURL,
-      instagramURL,
-      linkedInURL,
-      twitterURL,
-      githubURL,
-    } = values;
-
-    const user = {
-      name,
-      email,
-      phone,
-      imgURL,
-      category,
-      facebookURL,
-      instagramURL,
-      linkedInURL,
-      twitterURL,
-      githubURL,
-    };
-
-    const collectionRef = collection(db, "users", userData.uid, "contact");
-    await setDoc(doc(collectionRef), user);
-    navigateTo("/home");
-  };
-
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  const { handleAddSubmit, handleInput, values, errors } = useForm();
 
   return (
     <div className="form-container">
       <h2 className="section-heading">Add New Contact</h2>
-      <form className="contact-form add-form" onSubmit={handleSubmit}>
+      <form className="contact-form add-form" onSubmit={handleAddSubmit}>
         <div className="input-group general-details">
           <h3 className="group-heading">General Details :</h3>
           <div className="inputs-wrapper">
@@ -95,8 +30,10 @@ function AddForm() {
                 name="name"
                 id="name"
                 placeholder="  "
+                autoComplete="off"
               />
               <label htmlFor="name">name</label>
+              <span>{errors.name && `*${errors.name}`}</span>
             </div>
             <div className="input-container">
               <input
@@ -109,6 +46,7 @@ function AddForm() {
                 placeholder="  "
               />
               <label htmlFor="email">email</label>
+              <span>{errors.email && `*${errors.email}`}</span>
             </div>
             <div className="input-container">
               <input
@@ -121,6 +59,7 @@ function AddForm() {
                 placeholder="  "
               />
               <label htmlFor="number">Phone No.</label>
+              <span>{errors.phone && `*${errors.phone}`}</span>
             </div>
             <div className="input-container">
               <input
