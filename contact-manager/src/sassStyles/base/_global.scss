@@ -51,7 +51,17 @@ ul {
     &.secondary {
         background-color: $clr-disabled ;
     }
+}
 
+.error-text {
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    bottom: -2.2em;
+    color: #ff0000;
+    text-transform: capitalize;
+    margin-top: 1rem;
 }
 
 

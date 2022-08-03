@@ -13,12 +13,12 @@ import db from "../../firebase/firebaseConfig";
 import { addDoc, collection, setDoc, doc } from "firebase/firestore";
 import { userAuth } from "../../Contexts/UserAuthContext";
 import "../../sassStyles/components/contactForm.scss";
+import useForm from "../../hooks/useForm";
 
 function EditForm() {
   const location = useLocation();
   const contactData = location.state;
   const { user } = userAuth();
-  console.log(user);
   let navigateTo = useNavigate();
   const [values, setValues] = useState(contactData);
 
@@ -35,13 +35,6 @@ function EditForm() {
     githubURL,
     id,
   } = contactData;
-
-  console.log(id);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateData();
-  };
 
   const updateData = () => {
     const {
@@ -75,13 +68,11 @@ function EditForm() {
     navigateTo("/");
   };
 
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  const { handleSubmit, handleInput, errors } = useForm(
+    setValues,
+    values,
+    updateData
+  );
 
   return (
     <div className="form-container">
@@ -101,6 +92,7 @@ function EditForm() {
                 placeholder="  "
               />
               <label htmlFor="name">name</label>
+              <span className="error-text">{errors.name && `*${errors.name}`}</span>
             </div>
             <div className="input-container">
               <input
@@ -113,6 +105,7 @@ function EditForm() {
                 placeholder="  "
               />
               <label htmlFor="email">email</label>
+              <span className="error-text">{errors.email && `*${errors.email}`}</span>
             </div>
             <div className="input-container">
               <input
@@ -125,6 +118,7 @@ function EditForm() {
                 placeholder="  "
               />
               <label htmlFor="number">Phone No.</label>
+              <span className="error-text">{errors.phone && `*${errors.phone}`}</span>
             </div>
             <div className="input-container">
               <input

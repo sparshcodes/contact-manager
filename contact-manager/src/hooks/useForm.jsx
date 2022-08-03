@@ -1,39 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { setDoc, collection, doc } from "firebase/firestore";
-import { userAuth } from "../Contexts/UserAuthContext";
-import { useNavigate } from "react-router-dom";
-import db from "../firebase/firebaseConfig";
 
-const initialValues = {
-  name: "",
-  email: "",
-  phone: "",
-  imgURL: "",
-  category: "",
-  facebookURL: "",
-  instagramURL: "",
-  linkedInURL: "",
-  twitterURL: "",
-  githubURL: "",
-};
-
-function useForm() {
-  const [values, setValues] = useState(initialValues);
+function useForm(setValues, values, submitData, setErrorMessage) {
   const [isSubmit, setIsSubmit] = useState(false);
   const [errors, setErrors] = useState({ name: "" });
-  const { user: userData } = userAuth();
-  const navigateTo = useNavigate();
-  console.log(values);
+  // const { user: userData } = userAuth();
 
   useEffect(() => {
+    setErrorMessage && setErrorMessage("");
     console.log("useForm run");
     if (Object.keys(errors).length === 0 && isSubmit) {
-      console.log("all correct");
-      // addData();
+      submitData();
     }
   }, [errors]);
 
-  const handleAddSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateInfo(values));
     setIsSubmit(true);
@@ -42,67 +22,46 @@ function useForm() {
   //validation check
   const validateInfo = (values) => {
     let errors = {};
-    let { name, email, phone } = values;
+    // let { name, email, phone, password } = values;
 
     const nameRegex = /^[A-Za-z]{3,16}$/;
     const emailRegex =
       /^([A-Za-z0-9\.\-]+)@([a-z0-9]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
     const phoneRegex = /^[0-9]{4,14}$/;
 
-    // validation for name👇
-    if (!name.trim()) {
-      errors.name = "Name Can't Be Blank";
-    } else if (!nameRegex.test(name)) {
-      errors.name = "Name Should Contain 3-16 Characters";
-    }
-
     // validation for email👇
-    if (!emailRegex.test(email)) {
-      errors.email = "Email Is Invalid";
+    if (values.email) {
+      if (!emailRegex.test(values.email)) {
+        errors.email = "Email Is Invalid";
+      }
+    }
+    // validation for name👇
+    if (values.name) {
+      if (!values.name.trim()) {
+        errors.name = "Name Can't Be Blank";
+      } else if (!nameRegex.test(values.name)) {
+        errors.name = "Name Should Contain 3-16 Characters";
+      }
     }
 
     // validation for phone👇
-    if (!phone.trim()) {
-      errors.phone = "Phone Number Can't Be Blank";
-    } else if (!phoneRegex.test(phone)) {
-      errors.phone = "Phone Number Should Contain 4-14 Characters";
+    if (values.phone) {
+      if (!values.phone.trim()) {
+        errors.phone = "Phone Number Can't Be Blank";
+      } else if (!phoneRegex.test(values.phone)) {
+        errors.phone = "Phone Number Should Contain 4-14 Characters";
+      }
     }
 
+    // validation for password👇
+    if (values.password) {
+      if (values.password.length < 6) {
+        errors.password = "Password should be atleast 6 characters";
+      }
+    }
     return errors;
   };
   //validation check end
-
-  const addData = async () => {
-    const {
-      name,
-      email,
-      phone,
-      imgURL,
-      category,
-      facebookURL,
-      instagramURL,
-      linkedInURL,
-      twitterURL,
-      githubURL,
-    } = values;
-
-    const user = {
-      name,
-      email,
-      phone,
-      imgURL,
-      category,
-      facebookURL,
-      instagramURL,
-      linkedInURL,
-      twitterURL,
-      githubURL,
-    };
-
-    const collectionRef = collection(db, "users", userData.uid, "contact");
-    await setDoc(doc(collectionRef), user);
-    navigateTo("/home");
-  };
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -112,7 +71,7 @@ function useForm() {
     });
   };
 
-  return { handleSubmit, handleInput, values, errors };
+  return { handleSubmit, handleInput, errors };
 }
 
 export default useForm;

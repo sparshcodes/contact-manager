@@ -9,15 +9,72 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import "../../sassStyles/components/contactForm.scss";
+import { setDoc, collection, doc } from "firebase/firestore";
 import useForm from "../../hooks/useForm";
+import db from "../../firebase/firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { userAuth } from "../../Contexts/UserAuthContext";
+
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  imgURL: "",
+  category: "",
+  facebookURL: "",
+  instagramURL: "",
+  linkedInURL: "",
+  twitterURL: "",
+  githubURL: "",
+};
 
 function AddForm() {
-  const { handleAddSubmit, handleInput, values, errors } = useForm();
+  const [values, setValues] = useState(initialValues);
+  const { user: userData } = userAuth();
+  const navigateTo = useNavigate();
+
+  const addData = async () => {
+    const {
+      name,
+      email,
+      phone,
+      imgURL,
+      category,
+      facebookURL,
+      instagramURL,
+      linkedInURL,
+      twitterURL,
+      githubURL,
+    } = values;
+
+    const user = {
+      name,
+      email,
+      phone,
+      imgURL,
+      category,
+      facebookURL,
+      instagramURL,
+      linkedInURL,
+      twitterURL,
+      githubURL,
+    };
+
+    const collectionRef = collection(db, "users", userData.uid, "contact");
+    await setDoc(doc(collectionRef), user);
+    navigateTo("/home");
+  };
+
+  const { handleSubmit, handleInput, errors } = useForm(
+    setValues,
+    values,
+    addData
+  );
 
   return (
     <div className="form-container">
       <h2 className="section-heading">Add New Contact</h2>
-      <form className="contact-form add-form" onSubmit={handleAddSubmit}>
+      <form className="contact-form add-form" onSubmit={handleSubmit}>
         <div className="input-group general-details">
           <h3 className="group-heading">General Details :</h3>
           <div className="inputs-wrapper">
@@ -33,7 +90,7 @@ function AddForm() {
                 autoComplete="off"
               />
               <label htmlFor="name">name</label>
-              <span>{errors.name && `*${errors.name}`}</span>
+              <span className="error-text">{errors.name && `*${errors.name}`}</span>
             </div>
             <div className="input-container">
               <input
@@ -46,7 +103,7 @@ function AddForm() {
                 placeholder="  "
               />
               <label htmlFor="email">email</label>
-              <span>{errors.email && `*${errors.email}`}</span>
+              <span className="error-text">{errors.email && `*${errors.email}`}</span>
             </div>
             <div className="input-container">
               <input
@@ -59,7 +116,7 @@ function AddForm() {
                 placeholder="  "
               />
               <label htmlFor="number">Phone No.</label>
-              <span>{errors.phone && `*${errors.phone}`}</span>
+              <span className="error-text">{errors.phone && `*${errors.phone}`}</span>
             </div>
             <div className="input-container">
               <input

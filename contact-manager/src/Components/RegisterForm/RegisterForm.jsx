@@ -3,10 +3,13 @@ import { userAuth } from "../../Contexts/UserAuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsFacebook } from "react-icons/bs";
+import useForm from "../../hooks/useForm";
 
 function RegisterForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  const [values, setValues] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("");
   const { signUp, user } = userAuth();
   const navigate = useNavigate();
 
@@ -16,18 +19,35 @@ function RegisterForm() {
     }
   });
 
+  // const handleRegister = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await signUp(email, password);
+  //     navigate("/home");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   const handleRegister = async (e) => {
-    e.preventDefault();
     try {
-      await signUp(email, password);
+      await signUp(values.email, values.password);
       navigate("/home");
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      const errorCode = error.code.split("auth/")[1];
+      setErrorMessage(errorCode);
     }
   };
 
+  const { handleSubmit, handleInput, errors } = useForm(
+    setValues,
+    values,
+    handleRegister,
+    setErrorMessage
+  );
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <div className="wrapper">
         <h2 className="form-heading">sign up</h2>
         <div className="input-container">
@@ -35,30 +55,37 @@ function RegisterForm() {
             <input
               required
               type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={values.email}
+              onChange={handleInput}
               name="email"
               id="name"
               placeholder="  "
             />
             <label htmlFor="name">email</label>
+            <span className="error-text">
+              {errors.email && `*${errors.email}`}
+            </span>
           </div>
           <div className="input-group">
             <input
               required
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={values.password}
+              onChange={handleInput}
               name="password"
               id="password"
               placeholder="  "
             />
             <label htmlFor="password">password</label>
+            <span className="error-text">
+              {errors.password && `*${errors.password}`}
+            </span>
           </div>
         </div>
-        <button className="submit-btn" onClick={handleRegister}>
-          sign up
-        </button>
+        <span className="error-text error-message">
+          {errorMessage && errorMessage}
+        </span>
+        <button className="submit-btn">sign up</button>
         <p className="account-text">
           already have an account? <Link to="/">sign in</Link>
         </p>
@@ -82,5 +109,6 @@ export default RegisterForm;
   type="password"
 />
 <button onClick={handleRegister}>register</button>
-</form> */
+</form> 
+*/
 }

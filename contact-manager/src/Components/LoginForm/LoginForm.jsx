@@ -7,6 +7,7 @@ import { BsGithub, BsFacebook } from "react-icons/bs";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -29,8 +30,9 @@ function LoginForm() {
     try {
       await signIn(email, password);
       navigate("/home");
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      const errorCode = error.code.split("auth/")[1];
+      setErrorMessage(errorCode);
     }
   };
 
@@ -40,8 +42,8 @@ function LoginForm() {
     try {
       const user = await signInWithGoogle();
       navigate("/home");
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      setErrorMessage("Login Failed! Try Again");
     }
   };
 
@@ -52,7 +54,8 @@ function LoginForm() {
       const user = await signInWithFacebook();
       navigate("/home");
     } catch (e) {
-      console.log(e);
+      setErrorMessage("Login Failed! Try Again");
+
     }
   };
 
@@ -63,7 +66,8 @@ function LoginForm() {
       const user = await signInWithGithub();
       navigate("/home");
     } catch (e) {
-      setError(e.message);
+      setErrorMessage("Login Failed! Try Again");
+
     }
   };
 
@@ -97,6 +101,9 @@ function LoginForm() {
             <label htmlFor="password">password</label>
           </div>
         </div>
+        <span className="error-text error-message">
+          {errorMessage && errorMessage}
+        </span>
         <button className="submit-btn" onClick={handleLogin}>
           sign in
         </button>

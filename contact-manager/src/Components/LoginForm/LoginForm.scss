@@ -8,6 +8,19 @@
   padding: 3rem 2rem;
   text-align: center;
 
+  .error-text {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 0.3em 0.9em;
+    border-radius: 5px;
+    bottom: -2.5em;
+  }
+
+  //so that if there is no error we don't get any padding on it
+  .error-text:empty {
+    display: none;
+  }
+
   .wrapper {
     max-width: 50rem;
     margin: 0 auto;
@@ -30,7 +43,7 @@
       width: 100%;
 
       &:not(:last-child) {
-        margin-bottom: 5rem;
+        margin-bottom: 7rem;
       }
 
       label {
@@ -62,23 +75,33 @@
         }
       }
 
+
+
     }
   }
 
+  // .error-message {
+  //   background-color: #FF1A1A;
+  //   color: #fff;
+  //   font-size: 1.4rem;
+  //   width: fit-content;
+  //   margin-top: 2rem;
+  //   border-radius: 1rem;
+  // }
+
   .error-message {
-    background-color: #FF1A1A;
-    color: #fff;
-    font-size: 1.4rem;
-    width: fit-content;
-    margin-top: 2rem;
-    border-radius: 1rem;
+    position: static;
+    display: inline-block;
+    text-align: center;
+    margin-top: 1.5rem;
   }
 
   .submit-btn {
+    display: block;
     padding: 1em 3em;
     background-color: #fff;
     border: none;
-    margin: 4rem 0 5rem;
+    margin: 5rem auto;
     text-transform: capitalize;
     font-family: inherit;
     color: $clr-tertiary;

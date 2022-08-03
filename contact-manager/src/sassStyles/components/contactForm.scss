@@ -91,26 +91,6 @@
                 }
             }
 
-            span {
-                font-size: 1.2rem;
-                position: absolute;
-                display: none;
-                font-weight: 600;
-                bottom: -2.2em;
-                left: 0;
-                color: red;
-                text-transform: capitalize;
-                margin-top: 1rem;
-            }
-
-
-            input:not(:focus)~span {
-                display: block;
-            }
-
-            // input:invalid ~ span{
-            //     display: block;
-            // }
 
             #category {
                 appearance: none;
