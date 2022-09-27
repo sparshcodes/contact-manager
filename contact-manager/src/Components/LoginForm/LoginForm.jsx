@@ -4,11 +4,13 @@ import { userAuth } from "../../Contexts/UserAuthContext";
 import "./LoginForm.scss";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsFacebook } from "react-icons/bs";
+import useForm from "../../hooks/useForm";
 
 function LoginForm() {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  const [values, setValues] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -26,15 +28,23 @@ function LoginForm() {
   }, []);
 
   const handleLogin = async (e) => {
-    e.preventDefault();
     try {
-      await signIn(email, password);
+      await signIn(values.email, values.password);
       navigate("/home");
-    } catch (error) {
-      const errorCode = error.code.split("auth/")[1];
+    } catch (e) {
+      console.log(e);
+      const errorCode = e.code.split("auth/")[1];
       setErrorMessage(errorCode);
     }
   };
+  const { handleSubmit, handleInput, errors } = useForm(
+    setValues,
+    values,
+    handleLogin,
+    setErrorMessage
+  );
+
+  console.log(errors);
 
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
@@ -43,7 +53,11 @@ function LoginForm() {
       const user = await signInWithGoogle();
       navigate("/home");
     } catch (error) {
-      setErrorMessage("Login Failed! Try Again");
+      if (e.message.includes("account-exists-with-different-credential")) {
+        setErrorMessage("Account Already Exists With Different Credential");
+      } else {
+        setErrorMessage("Login Failed! Try Again");
+      }
     }
   };
 
@@ -54,8 +68,11 @@ function LoginForm() {
       const user = await signInWithFacebook();
       navigate("/home");
     } catch (e) {
-      setErrorMessage("Login Failed! Try Again");
-
+      if (e.message.includes("account-exists-with-different-credential")) {
+        setErrorMessage("Account Already Exists With Different Credential");
+      } else {
+        setErrorMessage("Login Failed! Try Again");
+      }
     }
   };
 
@@ -66,13 +83,16 @@ function LoginForm() {
       const user = await signInWithGithub();
       navigate("/home");
     } catch (e) {
-      setErrorMessage("Login Failed! Try Again");
-
+      if (e.message.includes("account-exists-with-different-credential")) {
+        setErrorMessage("Account Already Exists With Different Credential");
+      } else {
+        setErrorMessage("Login Failed! Try Again");
+      }
     }
   };
 
   return (
-    <form className="login-form form">
+    <form className="login-form form" onSubmit={handleSubmit}>
       <div className="wrapper">
         <h2 className="form-heading">sign in</h2>
         <div className="input-container">
@@ -80,33 +100,37 @@ function LoginForm() {
             <input
               required
               type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={values.email}
+              onChange={handleInput}
               name="email"
               id="name"
               placeholder="  "
             />
             <label htmlFor="name">email</label>
+            <span className="error-text">
+              {errors.email && `*${errors.email}`}
+            </span>
           </div>
           <div className="input-group">
             <input
               required
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={values.password}
+              onChange={handleInput}
               name="password"
               id="password"
               placeholder="  "
             />
             <label htmlFor="password">password</label>
+            <span className="error-text">
+              {errors.password && `*${errors.password}`}
+            </span>
           </div>
         </div>
         <span className="error-text error-message">
           {errorMessage && errorMessage}
         </span>
-        <button className="submit-btn" onClick={handleLogin}>
-          sign in
-        </button>
+        <button className="submit-btn">sign in</button>
         <p className="other-account-text">
           <span>or sign in with</span>
         </p>

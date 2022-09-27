@@ -34,6 +34,7 @@ function RegisterForm() {
       await signUp(values.email, values.password);
       navigate("/home");
     } catch (error) {
+      console.log(error);
       const errorCode = error.code.split("auth/")[1];
       setErrorMessage(errorCode);
     }

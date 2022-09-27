@@ -24,7 +24,8 @@ function useForm(setValues, values, submitData, setErrorMessage) {
     let errors = {};
     // let { name, email, phone, password } = values;
 
-    const nameRegex = /^[A-Za-z]{3,16}$/;
+    // space after a-z is to allow spaces in name
+    const nameRegex = /^([A-Za-z ]{3,16})$/;
     const emailRegex =
       /^([A-Za-z0-9\.\-]+)@([a-z0-9]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
     const phoneRegex = /^[0-9]{4,14}$/;
@@ -59,6 +60,7 @@ function useForm(setValues, values, submitData, setErrorMessage) {
         errors.password = "Password should be atleast 6 characters";
       }
     }
+    console.log(errors);
     return errors;
   };
   //validation check end

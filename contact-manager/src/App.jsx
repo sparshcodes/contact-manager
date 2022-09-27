@@ -20,6 +20,7 @@ import LoginForm from "./Components/LoginForm/LoginForm";
 import RegisterForm from "./Components/RegisterForm/RegisterForm";
 import { userAuth } from "./Contexts/UserAuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
 // create a deleteAll Button
 
@@ -75,6 +76,8 @@ function App() {
                   </ProtectedRoute>
                 }
               ></Route>
+              {/* The route that has a path equal to * serves as a catch all route. It only matches when no other routes do. */}
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </BrowserRouter>
         </div>
