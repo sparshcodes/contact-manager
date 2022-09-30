@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
-import cmLogo from "../../assets/cmLogo.png"
-import userProfile from "../../assets/user_profile.png"
+import cmLogo from "../../assets/cmLogo.png";
+import userProfile from "../../assets/user_profile.png";
 import { Link, useNavigate } from "react-router-dom";
 import { userAuth } from "../../Contexts/UserAuthContext";
 
@@ -14,7 +14,7 @@ function Header() {
       await logOut();
       navigate("/");
     } catch (e) {
-      console.log(e.message);
+      alert(e.message);
     }
   };
 

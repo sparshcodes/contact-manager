@@ -89,7 +89,7 @@ function ContactsList() {
       </ul>
       <div
         className="contacts-container"
-        style={{display: contactItems.length ? "grid" : "block"}}
+        style={{ display: contactItems.length ? "grid" : "block" }}
       >
         {contactItems.length ? (
           contactItems

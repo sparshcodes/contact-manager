@@ -48,7 +48,6 @@ function LoginForm() {
 
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
-
     try {
       const user = await signInWithGoogle();
       navigate("/home");
