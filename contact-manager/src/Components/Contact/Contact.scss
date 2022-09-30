@@ -6,7 +6,6 @@
     align-items: center;
     background-color: $clr-primary;
     outline: 1rem solid rgba($clr-primary, 0.4);
-    // padding:4.5rem 1rem 4.5rem 6rem;
     padding: 3.5em 2.5em;
     border-radius: 1.5rem;
     position: relative;
@@ -255,7 +254,6 @@
 
         }
 
-
         .user-image {
             img {
                 width: 8rem;
@@ -269,9 +267,6 @@
             border-radius: 1.2rem;
             padding: 0.8rem;
         }
-
-
-
     }
 
 }

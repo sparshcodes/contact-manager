@@ -3,11 +3,9 @@ import React, { useState, useEffect } from "react";
 function useForm(setValues, values, submitData, setErrorMessage) {
   const [isSubmit, setIsSubmit] = useState(false);
   const [errors, setErrors] = useState({ name: "" });
-  // const { user: userData } = userAuth();
 
   useEffect(() => {
     setErrorMessage && setErrorMessage("");
-    console.log("useForm run");
     if (Object.keys(errors).length === 0 && isSubmit) {
       submitData();
     }
@@ -22,7 +20,6 @@ function useForm(setValues, values, submitData, setErrorMessage) {
   //validation check
   const validateInfo = (values) => {
     let errors = {};
-    // let { name, email, phone, password } = values;
 
     // space after a-z is to allow spaces in name
     const nameRegex = /^([A-Za-z ]{3,16})$/;
@@ -60,7 +57,6 @@ function useForm(setValues, values, submitData, setErrorMessage) {
         errors.password = "Password should be atleast 6 characters";
       }
     }
-    console.log(errors);
     return errors;
   };
   //validation check end

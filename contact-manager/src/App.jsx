@@ -22,7 +22,6 @@ import { userAuth } from "./Contexts/UserAuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
-// create a deleteAll Button
 
 function App() {
   const [contacts, setContacts] = useState([]);

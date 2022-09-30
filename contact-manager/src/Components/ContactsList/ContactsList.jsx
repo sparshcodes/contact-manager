@@ -24,7 +24,6 @@ function ContactsList() {
           return <Contact contactDetail={contact} key={contact.id} />;
         });
 
-  console.log(contactItems);
   const setTabIndicatorStyle = (currentActiveElem) => {
     const widthOfElem = currentActiveElem.offsetWidth;
     const xPosOfElem = currentActiveElem.offsetLeft;

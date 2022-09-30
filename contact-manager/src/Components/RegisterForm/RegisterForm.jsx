@@ -4,10 +4,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsFacebook } from "react-icons/bs";
 import useForm from "../../hooks/useForm";
+import "../../sassStyles/components/authForm.scss";
+
 
 function RegisterForm() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [values, setValues] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const { signUp, user } = userAuth();
@@ -19,22 +19,11 @@ function RegisterForm() {
     }
   });
 
-  // const handleRegister = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await signUp(email, password);
-  //     navigate("/home");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const handleRegister = async (e) => {
     try {
       await signUp(values.email, values.password);
       navigate("/home");
     } catch (error) {
-      console.log(error);
       const errorCode = error.code.split("auth/")[1];
       setErrorMessage(errorCode);
     }
@@ -96,20 +85,3 @@ function RegisterForm() {
 }
 
 export default RegisterForm;
-
-{
-  /* <form>
-<input
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-  type="email"
-/>
-<input
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-  type="password"
-/>
-<button onClick={handleRegister}>register</button>
-</form> 
-*/
-}

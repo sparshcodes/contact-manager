@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { userAuth } from "../../Contexts/UserAuthContext";
-import "./LoginForm.scss";
+import "../../sassStyles/components/authForm.scss";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsFacebook } from "react-icons/bs";
 import useForm from "../../hooks/useForm";
 
 function LoginForm() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [values, setValues] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -32,7 +30,6 @@ function LoginForm() {
       await signIn(values.email, values.password);
       navigate("/home");
     } catch (e) {
-      console.log(e);
       const errorCode = e.code.split("auth/")[1];
       setErrorMessage(errorCode);
     }
@@ -44,7 +41,6 @@ function LoginForm() {
     setErrorMessage
   );
 
-  console.log(errors);
 
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
@@ -158,25 +154,9 @@ function LoginForm() {
         <p className="account-text">
           don't have an account? <Link to="/register">sign up</Link>
         </p>
-        {/* <Link to="/register">Go to register page</Link> */}
       </div>
     </form>
   );
 }
 
 export default LoginForm;
-
-{
-  /* <input
-value={email}
-onChange={(e) => setEmail(e.target.value)}
-type="email"
-/> 
-
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-          />
-*/
-}
